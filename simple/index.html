@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+ <meta charset="utf-8">
+ <title>Тестовое задание</title>
+ <link href="./assets/css/bootstrap.css" rel="stylesheet">
+ <link href="./assets/css/application.css" rel="stylesheet">
+ <link href="./assets/css/jquery-ui-1.10.0.custom.css" rel="stylesheet">
+ </head>
+
+ <body>
+
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<span class="brand">Телефонный справочник</span>
+			</div>
+		</div>
+	</div>
+	<div id="app-container">
+		<div id="main-region" class="container">
+		</div>
+		<!--<div id="panel-region"></div>
+		<div id="contacts-region"></div>-->
+		<div id="dialog-region"></div>
+	<div>
+
+
+	<script type="text/template" id="contact-list-layout">
+		<div id="panel-region"></div>
+		<div id="contacts-region"></div>
+	</script>
+
+	<script type="text/template" id="contact-list-panel">
+		<button class="btn btn-primary js-new">Новый контакт</button>
+	</script>
+
+	<script type="text/template" id="contact-list">		
+		<thead>			
+			<tr>
+				<th>Имя</th>
+				<th>Фамилия</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+
+	</script>
+
+	<script type="text/template" id="contact-list-item">
+		<td><%= firstName %></td>
+		<td><%= lastName %></td>
+		<td>
+			<a href="#contacts/<%= id %>" class="btn btn-small js-show">
+				<i class="icon-eye-open"></i>
+				Просмотр
+			</a>
+			<a href="#contacts/<%= id %>/edit" class="btn btn-small js-edit">
+				<i class="icon-pencil"></i>
+				Редактировать
+			</a>
+			<button class="btn btn-small js-delete">
+				<i class="icon-remove"></i>
+				Удалить
+			</button>
+		</td>
+	</script>
+
+	<script type="text/template" id="contact-view">
+		<h1><%= firstName %> <%= lastName %></h1>
+		<a href="#contacts/<%= id %>/edit" class="btn btn-small js-edit">
+			<i class="icon-pencil"></i>
+			Редактировать контакт
+		</a>
+		<p><strong>Номер телефона:</strong> <%= phoneNumber %></p>
+		<a href="#contacts" class="btn btn-small">
+			<i class=""></i>
+			Вернуться к списку контактов
+		</a>
+	</script>
+
+	<script type="text/template" id="missing-contact-view">
+		<div class="alert alert-error">Такого контакта не существует!</div>
+		<a href="#contacts" class="btn btn-small">
+			<i class=""></i>
+			Вернуться к списку контактов
+		</a>
+	</script>
+
+	<script type="text/template" id="loading-view">
+		<h1><%= title %></h1>
+		<p><%= message %></p>
+		<div id="spinner"></div>
+	</script>
+
+	<script type="text/template" id="contact-form">
+		
+		<form>
+			<div class="control-group">
+				<label for="contact-firstName" class="control-label">
+				Имя:</label>
+				<input id="contact-firstName" name="firstName"
+				type="text" value="<%= firstName %>"/>
+			</div>
+			<div class="control-group">
+				<label for="contact-lastName" class="control-label">
+				Фамилия:</label>
+				<input id="contact-lastName" name="lastName"
+				type="text" value="<%= lastName %>"/>
+			</div>
+			<div class="control-group">
+				<label for="contact-phoneNumber" class="control-label">
+				Номер телефона:</label>
+				<input id="contact-phoneNumber" name="phoneNumber"
+				type="text" value="<%= phoneNumber %>"/>
+			</div>
+			<button class="btn js-submit">Сохранить</button>
+		</form>
+	</script>
+	
+
+
+
+
+ <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+ <script src="./assets/javascripts/vendor/jquery-ui-1.10.4.js"></script>
+ <script src="http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"></script>
+ <script src="./assets/javascripts/vendor/underscore.js"></script>
+ <script src="./assets/javascripts/vendor/backbone.js"></script>
+ <script src="./assets/javascripts/vendor/backbone.syphon.js"></script>
+ <script src="./assets/javascripts/vendor/backbone.localstorage.js"></script>
+ <script src="./assets/javascripts/vendor/backbone.marionette.js"></script>
+ <script src="./assets/javascripts/vendor/spin.js"></script>
+ <script src="./assets/javascripts/vendor/spin.jquery.js"></script> 
+
+ <script src="./assets/javascripts/app.js"></script>
+ <script src="./assets/javascripts/apps/config/storage/localstorage.js"></script>
+ <script src="./assets/javascripts/entities/contact.js"></script>
+ <script src="./assets/javascripts/common/views.js"></script>
+
+ <script src="./assets/javascripts/apps/contacts/list/list_view.js"></script>
+ <script src="./assets/javascripts/apps/contacts/list/list_controller.js"></script>
+ <script src="./assets/javascripts/apps/contacts/show/show_controller.js"></script>
+ <script src="./assets/javascripts/apps/contacts/show/show_view.js"></script>
+ <script src="./assets/javascripts/apps/contacts/contacts_app.js"></script>
+ <script src="./assets/javascripts/apps/contacts/common/views.js"></script>
+ <script src="./assets/javascripts/apps/contacts/edit/edit_view.js"></script>
+ <script src="./assets/javascripts/apps/contacts/edit/edit_controller.js"></script>
+ <script src="./assets/javascripts/apps/contacts/new/new_view.js"></script>
+
+
+ <script type="text/javascript">
+	ContactManager.start();
+ </script>
+
+ </body>
+ </html>
