@@ -16,17 +16,14 @@ Backbone, Marionette, $, _){
 
 			});
 
-			console.log('IN WHEN');
-
 			contactsListLayout.on("show", function(){			
 				contactsListLayout.contactsRegion.show(contactsListView);
 				contactsListLayout.panelRegion.show(contactsListPanel);
-				console.log('IN LAYOUT');
 			});
 
 			contactsListPanel.on("contact:new", function(){
 				var newContact = new ContactManager.Entities.Contact();
-				newContact.attributes.title = "Новая запись";
+
 				var view = new ContactManager.ContactsApp.New.Contact({
 					model: newContact,
 					asModal: true
@@ -75,14 +72,11 @@ Backbone, Marionette, $, _){
 			});
 			contactsListView.on("childview:contact:show", function(childView, model){				
 				ContactManager.trigger("contact:show", model.get("id"));
-			});
-
-			console.log('IN WHEN BEFORE SHOW', contactsListView);
-
+			});			
+			
 			ContactManager.regions.main.show(contactsListLayout);
 		});
 
-			console.log('AFTER WHEN');
 		}
 	}
 });

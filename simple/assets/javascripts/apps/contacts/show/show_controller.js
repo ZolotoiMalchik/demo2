@@ -20,6 +20,9 @@ Backbone, Marionette, $, _){
 	 				contactView.on("contact:edit", function(contact){
 						ContactManager.trigger("contact:edit", contact.get("id"));
 					});
+					contactView.on("contacts:list", function(){
+						ContactManager.trigger("contacts:list");
+					});
 
 				} else {
 					contactView = new Show.MissingContact();
